@@ -46,6 +46,7 @@ public boolean withdrawMoney(double withdrawAmount) {
 ### Which part would you extract into a helper method?
 I would extract the condition inside the first `if` :
 ``withdrawAmount >= 0 && balance >= withdrawAmount && withdrawAmount < withdrawLimit && withdrawAmount + amountWithdrawn <= withdrawLimit``
+And removing the condition `withdrawAmount < withdrawLimit` that can be confirmed later by doing `amountWithdrawn <= withdrawLimit`
 ### What name would you give this helper?
 I would name it `canWithdraw`
 
