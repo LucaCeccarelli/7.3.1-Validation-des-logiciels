@@ -13,6 +13,8 @@ import java.util.Scanner;
  */
 public class BankAccountApp {
 
+	private static final String ACCOUNT_DOSENT_EXIST_ERROR_MESSAGE = "Account dosen't exist";
+
 
 	/**
 	 * @param args the command line arguments
@@ -136,7 +138,7 @@ public class BankAccountApp {
 					number = scan.nextInt();
 					BankAccount tmpacc = accManager.findAccount(number);
 					if (tmpacc == null) {
-						System.out.println("Account dosen't exist");
+						System.out.println(ACCOUNT_DOSENT_EXIST_ERROR_MESSAGE);
 						break;
 					}
 					accManager.deleteAccount(number);
@@ -151,7 +153,7 @@ public class BankAccountApp {
 						number = scan.nextInt();
 						BankAccount tmpacc = accManager.findAccount(number);
 						if (tmpacc == null) {
-							System.out.println("Account dosen't exist");
+							System.out.println(ACCOUNT_DOSENT_EXIST_ERROR_MESSAGE);
 							break;
 						}
 						System.out.println("Balance is: " + tmpacc.getBalance());
@@ -162,7 +164,7 @@ public class BankAccountApp {
 						number = scan.nextInt();
 						BankAccount tmpacc = accManager.findAccount(number);
 						if (tmpacc == null) {
-							System.out.println("Account dosen't exist");
+							System.out.println(ACCOUNT_DOSENT_EXIST_ERROR_MESSAGE);
 							break;
 						} else {
 							System.out.println("Enter an amount to deposit");
@@ -175,7 +177,7 @@ public class BankAccountApp {
 						number = scan.nextInt();
 						BankAccount tmpacc = accManager.findAccount(number);
 						if (tmpacc == null) {
-							System.out.println("Account dosen't exist");
+							System.out.println(ACCOUNT_DOSENT_EXIST_ERROR_MESSAGEss);
 							break;
 						} else {
 							System.out.println("Enter an amount to withdraw");

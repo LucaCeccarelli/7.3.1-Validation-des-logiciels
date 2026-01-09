@@ -158,12 +158,9 @@ public class BankAccount {
 	public int loadFromText(String text) {
 		int accountsLoaded = 0;
 		Bank accManager = new Bank();
-		FileInputStream fis = null;
-		Scanner fileScanner = null;
-		try {
+		try (FileInputStream fis = new FileInputStream(text);
+				Scanner fileScanner = new Scanner(fis)) {
 			while (fileScanner.hasNextLine()) {
-				fis = new FileInputStream(text);
-				fileScanner = new Scanner(fis);
 				BankAccount tmpAccount = new BankAccount();
 				tmpAccount.setAccountNumber(fileScanner.nextInt());
 				tmpAccount.setBalance(fileScanner.nextDouble());
@@ -184,22 +181,8 @@ public class BankAccount {
 				tmpAccount.setAccountHolder(accountHolderManager);
 				accountsLoaded = accManager.addAccount(tmpAccount, 1);
 			}
-			fis.close();
-
 		} catch (Exception e) {
 			System.out.println("Error reading file");
-		} finally {
-			if (fis != null) {
-				try {
-					fis.close();
-
-				} catch (IOException ex) {
-					// ignore
-				}
-			}
-			if (fileScanner != null) {
-				fileScanner.close();
-			}
 		}
 		return accountsLoaded;
 	}
